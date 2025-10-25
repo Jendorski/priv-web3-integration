@@ -5,8 +5,8 @@ import cors from 'cors'
 import multer from 'multer'
 import compression from 'compression'
 import mongoSanitize from 'express-mongo-sanitize'
-import dotenv from 'dotenv'
 import router from './routes/priv'
+import dotenv from 'dotenv'
 dotenv.config()
 
 export const server = express()
@@ -78,16 +78,6 @@ server.use(
       if (process.env.ENV !== 'production') {
         callback(null, origin)
       }
-      //When we go to prod, we will revisit this
-      // else {
-      //     const targetDomain = 'settle.com';
-      //     const validDomain = isSubdomain(origin, targetDomain);
-      //     if (validDomain) {
-      //         callback(null, origin);
-      //     } else {
-      //         callback(null, false);
-      //     }
-      // }
     },
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     preflightContinue: true,
